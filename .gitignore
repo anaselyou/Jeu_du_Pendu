@@ -1,0 +1,38 @@
+# --- IDEs / Editeurs (VS, Rider, IntelliJ, VS Code) ---
+.vs/
+.idea/
+.vscode/
+.rider/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- .NET / C# ---
+bin/
+obj/
+Modules/
+
+# --- Java (IntelliJ, Eclipse, Maven, Gradle) ---
+*.class
+*.jar
+*.war
+*.ear
+.metadata/
+.classpath
+.project
+.settings/
+.gradle/
+build/
+target/
+
+# --- Web / Node / JS ---
+node_modules/
+.pnpm-store/
+dist/
+.env
+.env.local
+
+# --- Systeme ---
+.DS_Store
+Thumbs.db

@@ -1,0 +1,14 @@
+# IDEs (bruit inutile pour Claude)
+.vs/
+.idea/
+.vscode/
+.rider/
+
+# Fichiers de configuration sensibles
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+.env
+.env.local
+*.secret
