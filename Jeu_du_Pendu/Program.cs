@@ -1,4 +1,8 @@
 ﻿
+// Main
+Console.Clear();
+JeuDuPendu();
+
 static bool EstUneLettre(char verificationLettre)
 {
     return (verificationLettre >= 'A' && verificationLettre <= 'Z' ||
@@ -60,7 +64,7 @@ static string SaisirMot()
     bool valide;
     
 
-    EcrireTexte(0,22,("Veuillez taper un mot á trouver suivi de <ENTER> "));
+    EcrireTexte(0,22,("Veuillez taper un mot à trouver suivi de <ENTER> "));
     do
     {
         
@@ -241,13 +245,13 @@ static void JeuDuPendu()
         motCacher = CompleterMot(motCacher, motReference, lettreChoisi);
 
         if (!EstDansMot(lettreChoisi, motReference))
-        {   
-            count++;
-            AfficherPendu(count);
-
+        {
             if (!lettreIncorrectes.Contains(lettreChoisi))
+            {
+                count++;
+                AfficherPendu(count);
                 lettreIncorrectes += lettreChoisi + " ";
-            
+            }
         }
         
         EcrireTexte(0,0,("Mot : " + motCacher));
@@ -270,9 +274,5 @@ static void JeuDuPendu()
         }
     } while (!gagne && !perdu);
 }
-
-// Main
-Console.Clear();
-JeuDuPendu();
 
 
