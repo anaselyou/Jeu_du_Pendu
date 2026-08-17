@@ -1,7 +1,27 @@
 ﻿
 // Main
-Console.Clear();
-JeuDuPendu();
+bool rejouer;
+
+
+
+do
+{
+    Console.Clear();
+    bool etat = JeuDuPendu();
+
+    if (etat)
+        EcrireTexte(0, 23, "GG vous avez gagné !");
+    else
+        EcrireTexte(0, 23, "Vous avez perdu !");
+
+    EcrireTexte(0, 23, "Voulez-vous rejouer ? (O/N) : ");
+
+    string reponse = Console.ReadLine();
+
+    rejouer = reponse.ToUpper() == "O";
+} while (rejouer);
+
+
 
 static bool EstUneLettre(char verificationLettre)
 {
@@ -226,11 +246,10 @@ static void EcrireTexte(int x, int y, string texte)
     Console.Write(texte);
 }
 
-static void JeuDuPendu()
+static bool JeuDuPendu()
 {
     Console.Clear();
     AfficherPotence();
-    bool gagne, perdu;
     int count = 0;
     
     Console.SetCursorPosition(0, 22);
@@ -239,7 +258,7 @@ static void JeuDuPendu()
     string lettreIncorrectes = "";
     char lettreChoisi;
     
-    do
+    while(true)
     {
         lettreChoisi = SaisirLettre();
         motCacher = CompleterMot(motCacher, motReference, lettreChoisi);
@@ -257,22 +276,19 @@ static void JeuDuPendu()
         EcrireTexte(0,0,("Mot : " + motCacher));
 
         EcrireTexte(25,0,("Lettres incorrectes : " + lettreIncorrectes));
-        
-        perdu = false;
-        gagne = false;
-        
+
         if (count == 6)
         {
             EcrireTexte(0,23,("Vous avez perdu fin de partie"));
-            perdu = true;
+            return false;
         }
 
         if (!motCacher.Contains("."))
         {
             EcrireTexte(0,23,("GG gagné !"));
-            gagne = true;
+            return true;
         }
-    } while (!gagne && !perdu);
+    }
 }
 
 
